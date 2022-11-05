@@ -42,7 +42,7 @@ def takeCommand():
     return query      
 
 
-if __name__=="_main_":
+if __name__=="__main__":
     wishme()
     while True:
         query = takeCommand().lower()
@@ -57,11 +57,55 @@ if __name__=="_main_":
 
         elif 'open youtube' in query:
             webbrowser.open('youtube.com') 
-        elif'How are you' in query:
+        elif 'How are you' in query:
             speak("I am fine. What about you")
-        elif' who made you' in query:
+        elif 'who made you' in query:
             speak(" my masters are the_unchained")
-            
+        elif 'when you were born' in query:
+            speak("I am still in progress, I havent taken birth properly")
+        elif 'Bunty tera sabun slow hai kya' in query:
+            speak("mera nahi par tumhara hoga") 
+        elif 'where you were born' in query:
+            speak("In Schooo of computer engineering campus")  
+        elif 'what do you like to do' in query:
+            speak("Serving my master is the most enjoyable thing for me")
+        elif 'open youtube' in query :
+            speak("opening youtube")
+            webbrowser.open("youtube.com") 
+        elif 'open facebook' in query :
+            speak("opening facebook") 
+            webbrowser.open("facebook.com")
+        elif 'open google' in query :
+            speak("opening google")
+            webbrowser.open("google.com") 
+        elif 'good morning bunty' in query :
+            speak("good morning, master have a beautifu day ahead")
+        elif 'good afternoon bunty' in query :
+            speak("good afternoon, master")    
+        elif 'good evening bunty' in query :
+            speak("good evening, master")           
+        elif 'good night bunty' in query :
+            speak("good night, master")   
+        elif 'who is your favourite superhero' in query :
+            speak("Iron man, love you 3000") 
+        elif 'open instagram' in query :
+            speak("opening instagram") 
+            webbrowser.open("instagram.com")
+        elif 'What is the time now' in query :
+            strTime = datetime.datetime.now().strftime ("%H:%M:%S")
+            speak(f"sir the time is (strfTime)")
+       
+
+
+
+
+
+        
+
+
+
+
+
            
 
                
