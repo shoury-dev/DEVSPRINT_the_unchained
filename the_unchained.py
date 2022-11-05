@@ -54,9 +54,17 @@ if __name__=="_main_":
             speak("According to wikipedia")
             print(results)
             speak(results)
-        
-            
 
+        elif 'open youtube' in query:
+            webbrowser.open('youtube.com') 
+        elif'How are you' in query:
+            speak("I am fine. What about you")
+        elif' who made you' in query:
+            speak(" my masters are the_unchained")
+            
+           
+
+               
 
 
 
