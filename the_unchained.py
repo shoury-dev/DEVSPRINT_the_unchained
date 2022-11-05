@@ -29,7 +29,35 @@ def takeCommand():
     with sr.Microphone() as source :
         print("Listening... ")
         r.pause_threshold = 2
+
+        audio = r.listen(source)
+
+    try :
+        print("Recognizing...")
+        query = r.recognize_google(audio,language='en-in')
+        print(f"User said:{query}\n")    
+    except Exception as e:
+        speak('Say that again please....')
+        return "None"
+    return query      
+
+
+if __name__=="_main_":
+    wishme()
+    while True:
+        query = takeCommand().lower()
+
+        if 'wikipedia' in query:
+            speak('Searching wikipedia...')
+            query = query.replace("wikipedia","")
+            results = wikipedia.summary(query,sentences = 5)
+            speak("According to wikipedia")
+            print(results)
+            speak(results)
         
+            
+
+
 
 
 
