@@ -13,13 +13,30 @@ import pywhatkit
 import pyautogui
 from win10toast import ToastNotifier
 
+pyautogui.alert(''' Our program includes the following functions-
+wikipedia
+greetings
+time
+facebook main page
+facebook friend request
+facebook notifications
+youtube main page
+youtube trending page
+youtube shorts
+camera
+google search
+shutdown
+
+
+''')
+
 
 
 
 engine =  pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 #print(voices[1].id)
-engine.setProperty('voice',voices[1].id)
+engine.setProperty('voice',voices[0].id)
 def speak(audio):
     engine.say(audio)
     engine.runAndWait()
@@ -67,8 +84,9 @@ def sendEmail(to, content):
     
 if __name__ == "__main__":
     wishme()
-    #while True :
-    if 1:
+    while True :
+      
+    
          query = takeCommand().lower()
     #logic  for xecuting tasks
          if 'wikipedia' in query :
@@ -77,26 +95,25 @@ if __name__ == "__main__":
             results  = wikipedia.summary(query, sentences=2)
             speak("According to wikipedia")
             speak(results)
+            continue
 
          
          elif 'how are u' in query:
             speak('i am good , what about u')
+            continue
          elif 'i am fine, can u do something to make me feel alive ' in query:
             webbrowser.open('yes definitely sir, what can i do for u , would u like to listen some music or say something of your choice')
-         elif 'open google' in query:
-
-            webbrowser.open('google.com')
-         elif 'open facebook' in query:
-            webbrowser.open("facebook.com") 
+            continue
       
          elif 'the time' in query :
             strTime = datetime.datetime.now().strftime("%H-%M-%D")
             speak(f"sir the time is {strTime}")
+            continue
 
          elif 'the date' in query :
             strTime = datetime.datetime.now().strftime("%Y-%M-%D")
             speak(f"sir the date is {strTime}")
-
+            continue
 
          #the function to send emails
          elif 'send mail to shouryjeet gupat' in query :
@@ -109,11 +126,7 @@ if __name__ == "__main__":
             except Exception as e :
                 print(e)
                 speak("Sorry dear i was not able to send the mail at the")
-         elif 'open chrome' in query :
-           pyttsx3.speak("opening chrome")
-           print(".")
-           print(".")
-           os.system("C:\Program Files\Google\Chrome\Application")
+            continue
 
 
           #knowing everything about followers 
@@ -126,7 +139,7 @@ if __name__ == "__main__":
 
             print (".....")
             webbrowser.open("instagram.com")
-
+            continue
 
 
             #to do anything on twitter
@@ -134,7 +147,11 @@ if __name__ == "__main__":
             pyttsx3.speak("opening Twitter ")
             print (".....")
             webbrowser.open("twitter.com")
-
+            continue
+         elif 'what the f***' in query:
+                   
+            speak("dont make me angry or i will fuck u")
+            continue
 
 
             #to do anything on facebook
@@ -149,6 +166,7 @@ if __name__ == "__main__":
                 pyttsx3.speak('opening friend request list')
                 print(".....")
                 webbrowser.open("facebook.com/friends")
+            continue    
 
 
 
@@ -167,6 +185,7 @@ if __name__ == "__main__":
                 pyttsx3.speak("showing shorts")
                 print(".....")
                 webbrowser.open("youtube.com/shorts")
+            continue    
 
 
 
@@ -175,19 +194,32 @@ if __name__ == "__main__":
             pyttsx3.speak("Shutting down")
             print('shutting down.....')
             time.sleep(5)
-            os.system(r"shutdown/s/t 1")   
+            os.system(r"shutdown /s /t 1") 
+            continue     
 
 
 
             #code to open any file in an system
-         elif 'open java folder' in query :
+         elif 'open file' in query :
+            file_dir = 'C:\\Users\\KIIT\\Desktop\\java files'
+            files =os.listdir(file_dir)
+            print(files)
+            os.startfile(os.path.join(file_dir, files[1]))
+         elif 'instagram followers' in query:
+           file_dir = 'C:\\Users\\KIIT\\Desktop\\java files'
+           files = os.listdir(file_dir)
+           print(files)
+           os.startfile(os.path.join(file_dir, files[7]))  
 
-          os.startfile("C:\\Users\\KIIT\\Desktop\\DOCS\\ACFrOgAqc0g0NY5gLUYmSYmM4NqDMTYBWzhmAXImpLxHk3ubm47JoSgJu_P5taKoRfQGehnGasfdStLRy9NrMAXMotalx0eMF4ve3_5YRC9E7LY5jFTbYvF3V9Gfrs6mkmJ9ifXaoD8oiykgLkd9.pdf")   
+
+           continue  
 
           
           
           #to search anything on google
-         elif 'google search' in query or 'search' in query or 'google' in query:            
+         elif 'google search' in query or 'search' in query or 'google' in query:   
+
+                 
             pyttsx3.speak("say what you want to search in google")
             print("say what you want to search in google")
             queryd = takeCommand().lower()
@@ -195,19 +227,23 @@ if __name__ == "__main__":
             print (x)
             y=""
             for i in range (len(x)):
-                if i<(len(x)-1):
+               if i<(len(x)-1):
                     y+=x[i]
                     y+=(r"+")
-                else:
+               else:
                     y+=x[i]
             z=r"google.com/search?q="
             z+=y
             pyttsx3.speak("Searching")
             print("Searching......")
             webbrowser.open(z)
+            continue
 
 
-            #to send whatsapp messages
+            #to capture images
+         elif 'camera' in query:
+            ec.capture(0,'camera','im1.jpg')
+            continue
          
          
 
@@ -226,126 +262,164 @@ if __name__ == "__main__":
             toaster.show_toast(Toasttitle, msg, duration=10, threaded=True)
 
             while toaster.notification_active:
-                time.sleep     
+                time.sleep 
+            continue        
 
 
                 #to do some other ordinary things qith the bunty
           
          elif 'How are you' in query:
             speak("I am fine. What about you")
+            continue
          elif 'who created you' in query:
             webbrowser.open("https://twitter.com/gdsckiit/status/1588789177898110976?t=FVcgdznp8Nt8Crf-sS_eAQ&s=08")
+            continue
          elif 'when you were born' in query:
             speak("I am still in progress, I havent taken birth properly")
+            continue
          elif 'Bunty tera sabun slow hai kya' in query:
-            speak("mera nahi par tumhara hoga") 
+            speak("mera nahi par tumhara hoga")
+            continue 
          elif 'where you were born' in query:
             speak("In School of computer engineering campus")  
+            continue
          elif 'what do you like to do' in query:
             speak("Serving my master is the most enjoyable thing for me")
+            continue
         
          
          
          elif 'good morning bunty' in query :
             speak("good morning, master have a beautifu day ahead")
+            continue
          elif 'good afternoon bunti' in query :
-            speak("good afternoon, master")    
+            speak("good afternoon, master")   
+            continue 
          elif 'good evening bunti' in query :
             speak("good evening, master")  
+            continue
          elif 'good night bunti' in query :
-            speak("good night, master")   
+            speak("good night, master") 
+            continue  
          elif 'who is your favourite superhero' in query :
             speak("Iron man, love you 3000") 
+            continue
          
     
          elif 'which is your favourite movie' in query :
             speak("I don't watch movies very often but Interstellar is my favourite")
+            continue
          elif 'open chrome' in query :
             pyttsx3.speak("opening chrome")
             print(".")
             print(".")
             os.system("chrome.exe")
+            continue
          elif 'open telegram' in query :
             pyttsx3.speak("opening telegram")
             print(".")
             print(".")
             os.system("telegram.exe")
+            continue
             #######
          elif 'open file explorer' in query:
             file_dr= 'Documents'
             work = os.listdr(file_dr)
             print(work)
-         elif 'open youtube' in query:
-            webbrowser.open('youtube.com') 
+            continue
+         
          elif 'How are you' in query:
             speak("I am fine. What about you")
          elif 'who created you' in query:
             webbrowser.open("https://twitter.com/gdsckiit/status/1588789177898110976?t=FVcgdznp8Nt8Crf-sS_eAQ&s=08")
+            continue
          elif 'when you were born' in query:
             speak("I am still in progress, I havent taken birth properly")
+            continue
          elif 'Bunty tera sabun slow hai kya' in query:
             speak("mera nahi par tumhara hoga") 
+            continue
          elif 'where you were born' in query:
-            speak("In School of computer engineering campus")  
+            speak("In School of computer engineering campus") 
+            continue 
          elif 'what do you like to do' in query:
             speak("Serving my master is the most enjoyable thing for me")
+            continue
          
     
          elif 'good morning bunty' in query :
             speak("good morning, master have a beautifu day ahead")
+            continue
          elif 'good afternoon bunti' in query :
-            speak("good afternoon, master")    
+            speak("good afternoon, master")   
+            continue 
          elif 'good evening bunti' in query :
-            speak("good evening, master")           
+            speak("good evening, master")  
+            continue         
          elif 'good night bunti' in query :
-            speak("good night, master")   
+            speak("good night, master") 
+            continue  
          elif 'who is your favourite superhero' in query :
             speak("Iron man, love you 3000") 
+            continue
         
         
          elif 'which is your favourite movie' in query :
             speak("I don't watch movies very often but Interstellar is my favourite")
-         elif 'open chrome' in query :
-            pyttsx3.speak("opening chrome")
-            print(".")
-            print(".")
-            os.system("chrome.exe")
+            continue
+      
          
          elif 'open telegram' in query :
             pyttsx3.speak("opening telegram")
             print(".")
             print(".")
             os.system("telegram.exe")
+            continue
             #######
          elif 'open file explorer' in query:
             file_dr= 'Documents'
             work = os.listdr(file_dr)
             print(work)
             os.startfiles(os.path.join(file_dr, work[1]))
+            continue
          elif 'open mail' in query :
             pyttsx3.speak("opening mail")
             print(".")
             print(".")
             os.system("mail.exe")
+            continue
          elif 'what do you do in your free time' in query :
             speak("just relax in your system")  
+            continue
          elif 'open microsoft store' in query :
             pyttsx3.speak("opening windows store")
             print(".")   
             print(".")
             os.system("microsoftstore.exe")
+            continue
          elif 'open wps office' in query :
             pyttsx3.speak("opening wps office")
             print(".")   
             print(".")
             os.system("wpsoffice.exe")
+            continue
          elif 'do you watch anime' in query :
             speak("yes, some of my favourites are demon slayer, Attack on Titan and death note")
+            continue
          elif 'open discord' in query :
             speak("opening discord")
             webbrowser.open("discord.com")
+            continue
          elif 'open reddit' in query :
             speak("opening reddit") 
             webbrowser.open("reddit.com")   
-                     
+            continue         
   
+
+
+             
+
+
+
+
+
